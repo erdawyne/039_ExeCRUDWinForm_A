@@ -49,9 +49,9 @@ namespace Exercise_CRUD
             }
             con.Close();
         }
-        public static void UpdateStudent(siswa std)
+        public static void UpdateStudent(siswa std, string id)
         {
-            string sql = "INSERT INTO siswa_table VALUES (Null,@StudentNama, @StudentNo, @StudentJK, @StudentKelas, Null)";
+            string sql = "UPDATE INTO siswa_table SET Nama = @StudentNama, No Siswa = @StudentNo, Jenis Kelamin= @StudentJK, Kelas = @StudentKelas WHERE ID = @StudentID";
             MySqlConnection con = GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, con);
             cmd.CommandType = CommandType.Text;
@@ -62,11 +62,29 @@ namespace Exercise_CRUD
             try
             {
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Berhasil DItambahkan.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Berhasil Update.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Siswa tidak dapat ditambahkan. \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Siswa tidak dapat Update. \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            con.Close();
+        }
+        public static void DeleteStudent (string id)
+        {
+            string sql = "DELETE FROM siswa_table WHERE ID = @StudentID";
+            MySqlConnection con = GetConnection();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("@StudentNama", MySqlDbType.VarChar.Value) = id;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Berhasil Dihapus.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Siswa tidak dapat dihapus. \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             con.Close();
         }
