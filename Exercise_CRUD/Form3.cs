@@ -13,13 +13,18 @@ namespace Exercise_CRUD
     public partial class Form3 : Form
     {
         private Form3 _parent;
-
+        private Form2 form2;
         private readonly Form3 _parent;
 
         public Form3(Form3 parent)
         {
             InitializeComponent();
             _parent = parent;
+        }
+
+        public Form3(Form2 form2)
+        {
+            this.form2 = form2;
         }
 
         public void Clear()

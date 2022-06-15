@@ -17,9 +17,13 @@ namespace Exercise_CRUD
             InitializeComponent();
         }
 
+        public void  Display()
+        {
+            DBStudent.DisplayAndSearch("SELECT ID, Nama, No, JK, Kelas FROM siswa_table", dataGridView);
+        }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            Form3 form = new Form3();
+            Form3 form = new Form3(this);
             form.ShowDialog();
         }
     }
