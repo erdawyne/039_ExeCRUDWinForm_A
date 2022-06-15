@@ -26,5 +26,10 @@ namespace Exercise_CRUD
             Form3 form = new Form3(this);
             form.ShowDialog();
         }
+
+        private void Form3_Shown(object sender, EventArgs e)
+        {
+            Display();
+        }
     }
 }

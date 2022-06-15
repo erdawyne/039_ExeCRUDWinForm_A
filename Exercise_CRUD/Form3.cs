@@ -65,6 +65,13 @@ namespace Exercise_CRUD
                 DBStudent.AddStudent(std);
                 Clear();
             }
+            _parent.Display();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Form3 form &&
+                   EqualityComparer<Form3>.Default.Equals(this._parent, form._parent);
         }
     }
 }
