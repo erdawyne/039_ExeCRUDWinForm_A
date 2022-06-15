@@ -70,7 +70,7 @@ namespace Exercise_CRUD
             }
             con.Close();
         }
-        public static void DeleteStudent (string id)
+        public static void DeleteStudent(string id)
         {
             string sql = "DELETE FROM siswa_table WHERE ID = @StudentID";
             MySqlConnection con = GetConnection();
@@ -86,6 +86,16 @@ namespace Exercise_CRUD
             {
                 MessageBox.Show("Siswa tidak dapat dihapus. \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            con.Close();
+        }
+        public static void DisplayAndSearch(string query, DataGridView dgv)
+        {
+            string sql = query;
+            MySqlConnection con = GetConnection();
+            MySqlCommand cmd = new MySqlCommand(sql, con);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            DataTable tbl = new DataTable();
+            adp.Fill(tbl);
             con.Close();
         }
     }
