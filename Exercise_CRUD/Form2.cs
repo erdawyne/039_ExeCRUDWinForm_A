@@ -19,7 +19,7 @@ namespace Exercise_CRUD
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            Form2 form = new Form2();
+            Form3 form = new Form3();
             form.ShowDialog();
         }
     }
