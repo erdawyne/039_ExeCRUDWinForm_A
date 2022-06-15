@@ -22,6 +22,11 @@ namespace Exercise_CRUD
             _parent = parent;
         }
 
+        public void Clear()
+        {
+            txtNama.Text = txtNo.Text = txtJK.Text = txtKelas.Text = string.Empty;
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -51,7 +56,9 @@ namespace Exercise_CRUD
             }
             if(btnSave.Text == "Save")
             {
-                Student std = new Student(txtNama.Text.Trim(), txtNo.Text.Trim(), txtJK.Text.Trim(), txtJK.Text.Trim());
+                siswa std = new siswa(txtNama.Text.Trim(), txtNo.Text.Trim(), txtJK.Text.Trim(), txtJK.Text.Trim());
+                DBStudent.AddStudent(std);
+                Clear();
             }
         }
     }
